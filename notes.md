@@ -41,3 +41,24 @@ Un peu en vrac, une liste des RFCs correspondant aux points qu'il peut être int
 
  * Deprecate mb_ereg_replace eval option - https://wiki.php.net/rfc/deprecate_mb_ereg_replace_eval_option
  * Deprecate (then Remove) Mcrypt - https://wiki.php.net/rfc/mcrypt-viking-funeral
+
+# Builder PHP 7.1
+
+```bash
+cd ~/developpement/php/~/developpement/php/
+git clone https://git.php.net/repository/php-src.git php-src
+
+cd php-src
+
+git checkout master
+./vcsclean
+git clean -f -d
+git pull
+
+./buildconf
+./configure --prefix=$HOME/bin/php-7.1-debug \
+    --disable-all --enable-debug \
+    --enable-maintainer-zts
+make -j 6 -l 8
+make install
+```
