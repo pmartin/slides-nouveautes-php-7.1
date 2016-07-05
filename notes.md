@@ -28,7 +28,7 @@ Un peu en vrac, une liste des RFCs correspondant aux points qu'il peut être int
  * Void Return Type - https://wiki.php.net/rfc/void_return_type
  * Allow specifying keys in list() - https://wiki.php.net/rfc/list_keys
  * Generalize support of negative string offsets - https://wiki.php.net/rfc/negative-string-offsets
- * Null Coalesce Equal Operator - https://wiki.php.net/rfc/null_coalesce_equal_operator
+ * Null Coalesce Equal Operator - https://wiki.php.net/rfc/null_coalesce_equal_operator -> NON IMPLEMENTE 2016-07-05
  * Catching Multiple Exception Types - https://wiki.php.net/rfc/multiple-catch
  * Square bracket syntax for array destructuring assignment - https://wiki.php.net/rfc/short_list_syntax
  * Nullable Types - https://wiki.php.net/rfc/nullable_types
