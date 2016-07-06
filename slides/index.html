@@ -281,6 +281,98 @@ var_dump($plop, $glop);
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Nullable Types</h2>
+	                    <pre><code data-trim>
+function fonc01(?int $a) {
+    var_dump($a);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+fonc01(100); // int(100)
+fonc01(null); // NULL
+	                    </code></pre>
+	                    <pre><code data-trim>
+fonc01();
+// Error: Too few arguments to function fonc01(), 0 passed
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/nullable_types">wiki.php.net/rfc/nullable_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Nullable Types</h2>
+						<p>PHP 7.0</p>
+	                    <pre><code data-trim>
+function fonc01(int $a) {
+    var_dump($a);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+fonc01(100); // int(100)
+fonc01(null); // TypeError: Argument 1 passed to
+              // fonc01() must be of the type
+              // integer, null given
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/nullable_types">wiki.php.net/rfc/nullable_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Nullable Types</h2>
+	                    <pre><code data-trim>
+function fonc02(?int $a, ?int $b) : ?int {
+    if ($a === null || $b === null) {
+        return null;
+    }
+    return $a + $b;
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+var_dump( fonc02(10, 20) ); // int(30)
+var_dump( fonc02(10, null) ); // NULL
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/nullable_types">wiki.php.net/rfc/nullable_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Nullable Types</h2>
+						<p>PHP 7.0</p>
+	                    <pre><code data-trim>
+function fonc02(int $a, $b) : int {
+    if ($a === null || $b === null) {
+        return null;
+    }
+    return $a + $b;
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+var_dump( fonc02(10, 20) ); // int(30)
+var_dump( fonc02(10, null) ); // TypeError:
+    // Return value of fonc02() must be of
+    // the type integer, null returned
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/nullable_types">wiki.php.net/rfc/nullable_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
