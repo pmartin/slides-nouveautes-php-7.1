@@ -172,6 +172,62 @@ var_dump($a, $b);
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Generalize support of negative string offsets</h2>
+	                    <pre><code data-trim>
+$str = "Pascal";
+var_dump($str[2]);  // string(1) "s"
+var_dump($str[-2]); // string(1) "a"
+	                    </code></pre>
+						<p>PHP 7.0 :</p>
+	                    <pre><code data-trim>
+string(1) "s"
+string(0) ""
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Generalize support of negative string offsets</h2>
+	                    <pre><code data-trim>
+$str = "Pas.al";
+$str[-3] = 'c';
+var_dump($str);  // string(6) "Pascal"
+	                    </code></pre>
+						<p>PHP 7.0 :</p>
+	                    <pre><code data-trim>
+Warning: Illegal string offset:  -3
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Generalize support of negative string offsets</h2>
+	                    <pre><code data-trim>
+var_dump( strpos("Pascal", "c", -5) ); // int(3)
+	                    </code></pre>
+						<p>PHP 7.0 :</p>
+	                    <pre><code data-trim>
+Warning: strpos(): Offset not contained in string
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
