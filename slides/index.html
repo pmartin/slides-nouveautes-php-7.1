@@ -144,6 +144,34 @@ function function03() : void {
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Allow specifying keys in <code>list()</code></h2>
+	                    <pre><code data-trim>
+$array = [
+    'glop' => "Hello",
+    'plop' => 123456,
+    'who' => "World",
+];
+	                    </code></pre>
+	                    <pre><code data-trim>
+list (
+    'glop' => $a,
+    'who' => $b
+) = $array;
+	                    </code></pre>
+	                    <pre><code data-trim>
+var_dump($a, $b);
+// string(5) "Hello"
+// string(5) "World"
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/list_keys">wiki.php.net/rfc/list_keys</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
