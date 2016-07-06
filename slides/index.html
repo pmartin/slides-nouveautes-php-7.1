@@ -397,6 +397,33 @@ $closure = Closure::fromCallable('plop');
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Iterable</h2>
+	                    <pre><code data-trim>
+function fonc01(iterable $data) {
+    foreach ($data as $key => $val) {
+        // ...
+    }
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+fonc01([10, 20, 30]);
+fonc01(new SplFixedArray(5));
+fonc01(mon_generateur());
+	                    </code></pre>
+	                    <pre><code data-trim>
+fonc01("plop");
+// TypeError: Argument 1 passed to fonc01()
+// must be iterable, string given
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/iterable">wiki.php.net/rfc/iterable</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
