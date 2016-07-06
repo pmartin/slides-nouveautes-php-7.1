@@ -256,6 +256,31 @@ try {
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Square bracket syntax for array destructuring assignment</h2>
+	                    <pre><code data-trim>
+[$a, $b] = [10, 20];
+var_dump($a, $b);
+// int(10)
+// int(20)
+	                    </code></pre>
+	                    <pre><code data-trim>
+['glop' => $glop, 'plop' => $plop] = [
+    'plop' => 42,
+    'glop' => "Hello",
+];
+var_dump($plop, $glop);
+// int(42)
+// string(5) "Hello"
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/short_list_syntax">wiki.php.net/rfc/short_list_syntax</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
