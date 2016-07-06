@@ -89,6 +89,33 @@
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Class Constant Visibility</h2>
+	                    <pre><code data-trim>
+class MaClasse {
+    public const MA_PUBLIQUE = 42;
+    private const MA_PRIVEE = 1234;
+    public function test() {
+        var_dump( self::MA_PRIVEE );
+    }
+}
+						</code></pre>
+	                    <pre><code data-trim>
+var_dump( MaClasse::MA_PUBLIQUE ); // int(42)
+(new MaClasse())->test(); // int(1234)
+						</code></pre>
+						<pre><code data-trim>
+// Error: Cannot access private const MaClasse::MA_PRIVEE
+var_dump( MaClasse::MA_PRIVEE );
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/class_const_visibility">wiki.php.net/rfc/class_const_visibility</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
