@@ -116,6 +116,34 @@ var_dump( MaClasse::MA_PRIVEE );
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Void Return Type</h2>
+	                    <pre><code data-trim>
+function fonc01() {
+    printf("%s\n", __FUNCTION__);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+function fonc02() : void {
+    printf("%s\n", __FUNCTION__);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+function function03() : void {
+    printf("%s\n", __FUNCTION__);
+
+    // Fatal error: A void function must not return a value
+    return 'plop';
+}
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/void_return_type">wiki.php.net/rfc/void_return_type</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
