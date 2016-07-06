@@ -34,7 +34,7 @@ Un peu en vrac, une liste des RFCs correspondant aux points qu'il peut être int
  * Nullable Types - https://wiki.php.net/rfc/nullable_types
  * Closure from callable function - https://wiki.php.net/rfc/closurefromcallable
  * Iterable - https://wiki.php.net/rfc/iterable
- * Throw Error in Extensions - https://wiki.php.net/rfc/throw_error_in_extensions
+ * Throw Error in Extensions - https://wiki.php.net/rfc/throw_error_in_extensions -> PAS ENCORE IMPLEMENTE 2016-07-06
  * Asynchronous Signal Handling - https://wiki.php.net/rfc/async_signals
 
 ## PHP 8.0 (avec deprecates en 7.1)
