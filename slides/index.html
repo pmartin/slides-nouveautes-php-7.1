@@ -228,6 +228,34 @@ Warning: strpos(): Offset not contained in string
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Catching Multiple Exception Types</h2>
+	                    <pre><code data-trim>
+class Plop extends Exception {}
+class Blah extends Exception {}
+class Another extends Exception {}
+	                    </code></pre>
+	                    <pre><code data-trim>
+try {
+    switch (mt_rand(0, 2)) {
+        case 0: throw new Plop();
+        case 1: throw new Blah();
+        case 2: throw new Another();
+    }
+} catch (Plop | Blah $e) {
+    printf("1er catch : %s\n", get_class($e));
+} catch (Another $e) {
+    printf("2nd catch : %s\n", get_class($e));
+}
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/multiple-catch">wiki.php.net/rfc/multiple-catch</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
