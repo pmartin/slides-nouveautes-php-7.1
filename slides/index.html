@@ -373,6 +373,30 @@ var_dump( fonc02(10, null) ); // TypeError:
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Closure from callable function</h2>
+	                    <pre><code data-trim>
+function ma_fonction() {
+    var_dump(__FUNCTION__);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+$closure = Closure::fromCallable('ma_fonction');
+$closure();  // string(11) "ma_fonction"
+	                    </code></pre>
+	                    <pre><code data-trim>
+$closure = Closure::fromCallable('plop');
+// TypeError: Failed to create closure from callable:
+// function 'plop' not found or invalid function name
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/closurefromcallable">wiki.php.net/rfc/closurefromcallable</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Nouveautés PHP 7.1 -->
 				</section>
 
