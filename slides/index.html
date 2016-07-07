@@ -318,23 +318,44 @@ function order_func($a, $b) {
 	                </section>
 
 					<section>
-	                    <h2>Group Use Declarations</h2>
+	                    <h2>Group use declarations</h2>
 	                    <pre><code data-trim>
-use Doctrine\Common\Collections\Expr\{
-    Comparison, Value, CompositeExpression
-};
-
-use Symfony\Component\Console\{
-  Helper\Table,
-  Question\ChoiceQuestion as Choice,
-  Question\ConfirmationQuestion,
+use Mon\Espace\De\Nom\ClasseAa;
+use Mon\Espace\De\Nom\ClasseBb;
+use Mon\Espace\De\Nom\ClasseCc;
+use Mon\Espace\De\Nom\Enfant\AutreClasse as ClassDd;
+	                    </code></pre>
+	                    <pre class="fragment"><code data-trim>
+use Mon\Espace\De\Nom\ {
+    ClasseAa, ClasseBb, ClasseCc,
+    Enfant\AutreClasse as ClassDd
 };
 	                    </code></pre>
-						<p>
-							<a href="https://wiki.php.net/rfc/group_use_declarations">wiki.php.net/rfc/group_use_declarations</a>
-						</p>
 	                    <aside class="notes">
-	                        ul>li*3
+	                        <ul>
+	                            <li>Les deux écritures dont pareil. La seconde est plus courte et moins répétitive</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Group use declarations</h2>
+	                    <pre><code data-trim>
+use function Mon\Nom\fonc01;
+use const Mon\Nom\CONST01;
+use Mon\Nom\Class01;
+	                    </code></pre>
+	                    <pre><code data-trim>
+use Mon\Nom\ {
+    function fonc01,
+    const CONST01,
+    Class01
+};
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Marche aussi pour les fonctions et constantes, qu'on peut <em>user</em> depuis PHP 5.4</li>
+	                        </ul>
 	                    </aside>
 	                </section>
 
@@ -348,6 +369,49 @@ use Symfony\Component\Console\{
 						</p>
 	                    <aside class="notes">
 	                        ul>li*3
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Classes anonymes</h2>
+	                    <pre><code data-trim>
+$obj = new class (&quot;Monde&quot;) {
+    protected $qui;
+
+    public function __construct($qui) {
+        $this-&gt;qui = $qui;
+    }
+
+    public function hello() {
+        printf(&quot;Hello, %s !\n&quot;, $this-&gt;qui);
+    }
+};
+
+var_dump($obj);
+$obj-&gt;hello();
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Construction d'un objet à la volée, sans définir de classe.</li>
+	                            <li>On peut user un Trait, implémenter une interface, hériter d'une autre classe, ...</li>
+	                            <li>On ne peut pas sérialiser (puisqu'on ne saurait pas vers quoi dé-sérialiser)</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Classes anonymes</h2>
+	                    <pre><code data-trim>
+object(class@anonymous)#1 (1) {
+  [&quot;qui&quot;:protected]=&gt;
+  string(5) &quot;Monde&quot;
+}
+Hello, Monde !
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>La sortie obtenue. bref, ça marche.</li>
+	                        </ul>
 	                    </aside>
 	                </section>
 
