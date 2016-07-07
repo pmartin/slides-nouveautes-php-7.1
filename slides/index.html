@@ -674,34 +674,6 @@ var_dump( MaClasse::MA_PRIVEE );
 	                </section>
 
 					<section>
-	                    <h2>Void Return Type</h2>
-	                    <pre><code data-trim>
-function fonc01() {
-    printf("%s\n", __FUNCTION__);
-}
-	                    </code></pre>
-	                    <pre><code data-trim>
-function fonc02() : void {
-    printf("%s\n", __FUNCTION__);
-}
-	                    </code></pre>
-	                    <pre><code data-trim>
-function function03() : void {
-    printf("%s\n", __FUNCTION__);
-
-    // Fatal error: A void function must not return a value
-    return 'plop';
-}
-	                    </code></pre>
-						<p>
-							<a href="https://wiki.php.net/rfc/void_return_type">wiki.php.net/rfc/void_return_type</a>
-						</p>
-	                    <aside class="notes">
-	                        ul>li*3
-	                    </aside>
-	                </section>
-
-					<section>
 	                    <h2>Allow specifying keys in <code>list()</code></h2>
 	                    <pre><code data-trim>
 $array = [
@@ -924,6 +896,34 @@ var_dump( fonc02(10, null) ); // TypeError:
 	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/nullable_types">wiki.php.net/rfc/nullable_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Void Return Type</h2>
+	                    <pre><code data-trim>
+function fonc01() {
+    printf("%s\n", __FUNCTION__);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+function fonc02() : void {
+    printf("%s\n", __FUNCTION__);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+function function03() : void {
+    printf("%s\n", __FUNCTION__);
+
+    // Fatal error: A void function must not return a value
+    return 'plop';
+}
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/void_return_type">wiki.php.net/rfc/void_return_type</a>
 						</p>
 	                    <aside class="notes">
 	                        ul>li*3
