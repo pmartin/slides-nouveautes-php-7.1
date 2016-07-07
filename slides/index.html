@@ -189,6 +189,27 @@ Catchable fatal error:
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Combined Comparison (Spaceship) Operator</h2>
+						<pre><code data-trim>
+function order_func($a, $b) {
+    return $a &lt;=&gt; $b;
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+function order_func($a, $b) {
+    return [$a-&gt;x, $a-&gt;y, $a-&gt;foo]
+        &lt;=&gt; [$b-&gt;x, $b-&gt;y, $b-&gt;foo];
+}
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/combined-comparison-operator">wiki.php.net/rfc/combined-comparison-operator</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Rappel PHP 7.0 -->
 				</section>
 
