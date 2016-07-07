@@ -153,39 +153,141 @@ Un chat : 😸
 	                    </aside>
 	                </section>
 
-					<section>
-	                    <h2>Return Types</h2>
+					<section class="section section-php7 section-php7-part1" data-state="section-php7-part1">
+	                    <h2>Type hints scalaires</h2>
 	                    <pre><code data-trim>
-function add($a, $b) : DateTime {
+&lt;?php
+function add(int $a, int $b) {
     return $a + $b;
 }
 	                    </code></pre>
-						<p>
-							<a href="https://wiki.php.net/rfc/return_types">wiki.php.net/rfc/return_types</a>
-						</p>
+	                    <pre><code data-trim>
+var_dump( add(10, 20) );
+var_dump( add('10', '20') );
+	                    </code></pre>
+	                    <pre><code data-trim>
+int(30)
+int(30)
+	                    </code></pre>
 	                    <aside class="notes">
-	                        ul>li*3
+	                        <ul>
+	                            <li>Approche <em>souple</em>, par défaut</li>
+	                            <li><code>"20"</code> peut être converti en entier et l'est donc.</li>
+	                        </ul>
 	                    </aside>
 	                </section>
 
-					<section>
-	                    <h2>Return Types</h2>
-						<pre><code data-trim>
-function get_config(): array {
+	                <section class="section section-php7 section-php7-part1" data-state="section-php7-part1">
+	                    <h2>Type hints scalaires</h2>
+	                    <pre><code data-trim>
+try {
+    var_dump( add(10, 'abc') );
+}
+catch (TypeError $e) {
+    var_dump( $e-&gt;getMessage() );
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+string(148) &quot;Argument 2 passed to add()
+    must be of the type integer, string given,
+    called in .../test-01.php on line 12&quot;
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li><code>"abc"</code> ne peut pas être converti en entier. Donc erreur</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Types de retour</h2>
+	                    <pre><code data-trim>
+function add(int $a, int $b) : int {
+    return $a + $b;
+}
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li><a href="https://wiki.php.net/rfc/return_types">Return Types</a></li>
+	                            <li>Levée d'erreur si la fonction essaye de retourner autre chose que le type spécifié dans sa déclaration</li>
+	                            <li>Surtout utile en développement / test&nbsp;? Analyse statique&nbsp;!</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Types de retour</h2>
+	                    <pre><code data-trim>
+function get_config() : array {
     return 42;
 }
 get_config();
-                    </code></pre>
-                    <pre><code data-trim>
-Catchable fatal error:
-    Return value of get_config() must be of the type array,
-    integer returned in %s on line %d
-                    </code></pre>
-						<p>
-							<a href="https://wiki.php.net/rfc/return_types">wiki.php.net/rfc/return_types</a>
-						</p>
+	                    </code></pre>
+
+	                    <pre><code data-trim>
+Fatal error: Uncaught TypeError:
+    Return value of get_config() must be
+    of the type array, integer returned
+	                    </code></pre>
 	                    <aside class="notes">
-	                        ul>li*3
+	                        <ul>
+	                            <li>Exemple d'erreur&nbsp;: la fonction a essayé de retourner un entier, alors qu'elle était censée retourner un array.</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Typage strict</h2>
+	                    <pre><code data-trim>
+&lt;?php
+declare(strict_types=1);
+
+function add(int $a, int $b) {
+    return $a + $b;
+}
+
+add(10, '20');
+	                    </code></pre>
+	                    <pre><code data-trim>
+Fatal error: Uncaught TypeError:
+    Argument 2 passed to add()
+    must be of the type integer, string given
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Optionnellemnt, avec une directive <code>declare()</code> (tout en haut du fichier et s'applique pour l'ensemble du fichier), on peut passer en mode de typage strict.</li>
+	                            <li><code>"20"</code> est une chaine, pas un entier, donc erreur</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Souple / Strict&nbsp;?</h2>
+	                    <ul>
+	                        <li>
+	                            Paramètres&nbsp;: au choix de l'appelant
+	                            <ul>
+	                                <li>Sait si il manipule des types <em>souples</em> ou <em>stricts</em></li>
+	                            </ul>
+	                        </li>
+	                        <li>
+	                            Retour&nbsp;: au choix de l'appelé
+	                            <ul>
+	                                <li>Sait si la fonction qu'il a écrite utilise des types <em>souples</em> ou <em>stricts</em></li>
+	                            </ul>
+	                        </li>
+	                    </ul>
+	                    <aside class="notes">
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Souple / Strict&nbsp;?</h2>
+	                    <ul>
+	                        <li>Les données sont des types indiqués.</li>
+	                        <li>Détermine si des conversions sont ou non <strong>permises</strong>.</li>
+	                    </ul>
+	                    <aside class="notes">
 	                    </aside>
 	                </section>
 
