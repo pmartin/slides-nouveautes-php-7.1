@@ -117,6 +117,28 @@
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Null Coalesce Operator</h2>
+						<pre><code data-trim>
+$username = $_GET['user'] ?? 'nobody';
+                    </code></pre>
+                    <pre><code data-trim>
+$model = Model::get($id) ?? $default_model;
+                    </code></pre>
+                    <pre><code data-trim>
+function foo() {
+    echo "executed!", PHP_EOL;
+}
+var_dump(true ?? foo());
+                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/isset_ternary">wiki.php.net/rfc/isset_ternary</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Rappel PHP 7.0 -->
 				</section>
 
