@@ -210,6 +210,27 @@ function order_func($a, $b) {
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Group Use Declarations</h2>
+	                    <pre><code data-trim>
+use Doctrine\Common\Collections\Expr\{
+    Comparison, Value, CompositeExpression
+};
+
+use Symfony\Component\Console\{
+  Helper\Table,
+  Question\ChoiceQuestion as Choice,
+  Question\ConfirmationQuestion,
+};
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/group_use_declarations">wiki.php.net/rfc/group_use_declarations</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Rappel PHP 7.0 -->
 				</section>
 
