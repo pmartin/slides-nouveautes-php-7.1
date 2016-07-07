@@ -163,8 +163,12 @@ var_dump(true ?? foo());
 					<section>
 	                    <h2>Unicode Codepoint Escape Syntax</h2>
 	                    <pre><code data-trim>
-$ php -r 'echo "Un chat : \u{1F638} \n";'
-Un chat : 😸
+$ php -r 'echo "I \u{2665} PHP!\n";'
+I ♥ PHP!
+	                    </code></pre>
+	                    <pre class="fragment"><code data-trim>
+$ php -r 'echo "\u{1F408} \u{1F431} \u{1F638} \u{1F639} \u{1F63A} \u{1F63B} \u{1F63C} \u{1F63D} \u{1F63E} \u{1F63F} \u{1F640} - so cute!!!\n";'
+🐈 🐱 😸 😹 😺 😻 😼 😽 😾 😿 🙀 - so cute!!!
 	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/unicode_escape">wiki.php.net/rfc/unicode_escape</a>
