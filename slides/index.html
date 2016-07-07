@@ -153,6 +153,42 @@ Un chat : 😸
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Return Types</h2>
+	                    <pre><code data-trim>
+function add($a, $b) : DateTime {
+    return $a + $b;
+}
+	                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/return_types">wiki.php.net/rfc/return_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
+					<section>
+	                    <h2>Return Types</h2>
+						<pre><code data-trim>
+function get_config(): array {
+    return 42;
+}
+get_config();
+                    </code></pre>
+                    <pre><code data-trim>
+Catchable fatal error:
+    Return value of get_config() must be of the type array,
+    integer returned in %s on line %d
+                    </code></pre>
+						<p>
+							<a href="https://wiki.php.net/rfc/return_types">wiki.php.net/rfc/return_types</a>
+						</p>
+	                    <aside class="notes">
+	                        ul>li*3
+	                    </aside>
+	                </section>
+
 					<!-- Rappel PHP 7.0 -->
 				</section>
 
