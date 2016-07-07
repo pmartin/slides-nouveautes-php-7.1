@@ -360,15 +360,127 @@ use Mon\Nom\ {
 	                </section>
 
 					<section>
-	                    <h2>Exceptions in the engine</h2>
-	                    <p>
-	                    	TODO
-	                    </p>
-						<p>
-							<a href="https://wiki.php.net/rfc/engine_exceptions_for_php7">wiki.php.net/rfc/engine_exceptions_for_php7</a>
-						</p>
+	                    <h2>Erreurs → exceptions</h2>
+	                    <ul>
+	                        <li>Une partie des erreurs Fatales</li>
+	                        <li>internes à / levées par PHP</li>
+	                        <li>sont transformées en <code>Error</code></li>
+	                        <li>qui peuvent être <em>catchées</em></li>
+	                    </ul>
 	                    <aside class="notes">
-	                        ul>li*3
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Erreurs → exceptions</h2>
+	                    <pre><code data-trim>
+&lt;?php
+$obj = null;
+try {
+    // Ooops !
+    $obj-&gt;methode();
+}
+catch (Error $e) {
+    var_dump($e-&gt;getMessage());
+}
+?&gt;
+	                    </code></pre>
+	                    <pre><code data-trim>
+string(43) &quot;Call to a member function methode() on null&quot;
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Appel d'une méthode sur <code>null</code></li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Erreurs → exceptions</h2>
+	                    <pre><code data-trim>
+&lt;?php
+$php = &lt;&lt;&lt;'PHP'
+$a = 10        // -- Parse error ! -- //
+printf("\$a = %d\n", $a);
+PHP;
+
+try {
+    eval($php);
+}
+catch (ParseError $e) {
+    var_dump($e-&gt;getMessage());
+}
+?&gt;
+	                    </code></pre>
+	                    <pre><code data-trim>
+string(44) &quot;syntax error, unexpected 'printf' (T_STRING)&quot;
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Erreur de syntaxe dans du code évalué (oué, <code>eval()</code> c'est mal)</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Erreurs → exceptions</h2>
+	                    <pre><code data-trim>
+echo &quot;Fichier 1 - avant\n&quot;;
+try {
+    // Fichier avec une erreur de syntaxe
+    include __DIR__ . '/test-06-2.php';
+}
+catch (Error $e) {
+    echo &quot;Error catch&eacute;e : &quot;;
+    var_dump($e-&gt;getMessage());
+}
+echo &quot;Fichier 1 - après\n&quot;;
+	                    </code></pre>
+	                    <pre><code data-trim>
+Fichier 1 - avant
+Error catchée : string(42) "syntax error, unexpected '$b' (T_VARIABLE)"
+Fichier 1 - après
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Parse errors peuvent être catchées si elles se produisent dans un autre contexte de compilation que le fichier courant.</li>
+	                            <li>Dans un fichier inclu, par exemple.</li>
+	                            <li>Le fichier courant doit être correct, lui, par contre.</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Erreurs → exceptions</h2>
+	                    <p>Hiérarchie d'erreurs / exceptions</p>
+	                    <pre><code data-trim>
+interface Throwable
+    Exception implements Throwable
+        // Toutes les exceptions usuelles
+    Error implements Throwable
+        AssertionError extends Error
+        ParseError extends Error
+        TypeError extends Error
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Séparation entre les <code>Exception</code>, qui continuent à se comporter comme avant</li>
+	                            <li>Et les <code>Error</code>, qu'on peut désormais catcher en plus</li>
+	                            <li>De l'ancien code qui catchait les exceptions ne catchera pas les errors et on garde donc, si on ne change rien, le comportement existant.</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Erreurs → exceptions</h2>
+	                    <ul>
+	                        <li><strong>Une partie</strong> des erreurs <strong>Fatales</strong></li>
+	                        <li><strong>internes</strong> à / levées par PHP</li>
+	                    </ul>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>J'insiste</li>
+	                        </ul>
 	                    </aside>
 	                </section>
 
