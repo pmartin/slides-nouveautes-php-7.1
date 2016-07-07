@@ -415,6 +415,93 @@ Hello, Monde !
 	                    </aside>
 	                </section>
 
+					<section>
+	                    <h2>Generators et <code>return</code></h2>
+	                    <pre><code data-trim>
+function plop() {
+    yield 100;
+    yield 200;
+    return 42;
+}
+
+foreach (($generator = plop()) as $val) {
+    var_dump($val);
+}
+
+var_dump( $generator-&gt;getReturn() );
+	                    </code></pre>
+	                    <pre><code data-trim>
+int(100)
+int(200)
+int(42)
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>PHP&nbsp;5&nbsp;: erreur si <code>return</code> avec valeur</li>
+	                            <li><code>getReturn()</code> OK si le generator a terminé. Sinon, erreur.</li>
+	                            <li>Utile quand on veut un <em>résultat</em> à la fin d'une génération de données</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Generator Delegation</h2>
+	                    <pre><code data-trim>
+function test() {
+    yield from [10, 20, 30];
+}
+
+foreach (test() as $val) {
+    var_dump($val);
+}
+	                    </code></pre>
+	                    <pre><code data-trim>
+int(10)
+int(20)
+int(30)
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Depuis un <code>Traversable</code> ou un <code>array</code></li>
+	                            <li>Vu que quasiment personne dans la salle n'utilise de generateur, je passe là-dessus très vite&nbsp;: ça peut demander un peu de pratique avant d'être compris.</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
+	                <section>
+	                    <h2>Generator Delegation</h2>
+	                    <pre><code data-trim>
+function sub_generator_1() {
+    yield 10;
+    yield 20;
+}
+function sub_generator_2() {
+    yield from [ 'aa', 'bb', ];
+}
+function delegating_generator() {
+    yield from sub_generator_1();
+    yield from sub_generator_2();
+}
+
+foreach (delegating_generator() as $val) {
+    var_dump($val);
+}
+                    </code></pre>
+                    <pre><code data-trim>
+int(10)
+int(20)
+string(2) "aa"
+string(2) "bb"
+	                    </code></pre>
+	                    <aside class="notes">
+	                        <ul>
+	                            <li>Ou depuis un sous-<code>Generator</code></li>
+	                            <li>(pareil)</li>
+	                            <li>Note to self&nbsp;: peut faire une idée d'article de blog...</li>
+	                        </ul>
+	                    </aside>
+	                </section>
+
 					<!-- Rappel PHP 7.0 -->
 				</section>
 
