@@ -119,23 +119,28 @@
 
 					<section>
 	                    <h2>Null Coalesce Operator</h2>
-						<pre><code data-trim>
+	                    <pre><code data-trim>
+$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
+	                    </code></pre>
+	                    <pre class="fragment"><code data-trim>
 $username = $_GET['user'] ?? 'nobody';
-                    </code></pre>
-                    <pre><code data-trim>
+	                    </code></pre>
+	                    <pre class="fragment"><code data-trim>
 $model = Model::get($id) ?? $default_model;
-                    </code></pre>
-                    <pre><code data-trim>
+	                    </code></pre>
+	                    <pre class="fragment"><code data-trim>
 function foo() {
     echo "executed!", PHP_EOL;
 }
 var_dump(true ?? foo());
-                    </code></pre>
-						<p>
-							<a href="https://wiki.php.net/rfc/isset_ternary">wiki.php.net/rfc/isset_ternary</a>
-						</p>
+	                    </code></pre>
 	                    <aside class="notes">
-	                        ul>li*3
+	                        <ul>
+	                            <li><a href="https://wiki.php.net/rfc/isset_ternary">Null Coalesce Operator</a></li>
+	                            <li>On a tous utilisé la première écriture... Qui est longue et on se répête... La seconde est plus sympa, non&nbsp;?</li>
+	                            <li>Prend la valeur de gauche&nbsp;; ou celle de droite si celle de gauche était <em>fausse</em></li>
+	                            <li>Peut être utilisé pour faire du short-circuit&nbsp;!</li>
+	                        </ul>
 	                    </aside>
 	                </section>
 
