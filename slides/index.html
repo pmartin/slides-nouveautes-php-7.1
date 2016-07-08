@@ -181,7 +181,7 @@ $ php -r &apos;echo &quot;\u{1F408} \u{1F431} \u{1F638} \u{1F639} \u{1F63A} \u{1
 					<section class="section section-php7 section-php7-part1" data-state="section-php7-part1">
 	                    <h2>Type hints scalaires</h2>
 	                    <pre><code data-trim data-noescape>
-function add(int $a, int $b) {
+function add(<mark>int</mark> $a, <mark>int</mark> $b) {
     return $a + $b;
 }
 	                    </code></pre>
@@ -205,9 +205,9 @@ int(30)
 	                    <h2>Type hints scalaires</h2>
 	                    <pre><code data-trim data-noescape>
 try {
-    var_dump( add(10, &apos;abc&apos;) );
+    var_dump( add(10, <mark>&apos;abc&apos;</mark>) );
 }
-catch (TypeError $e) {
+catch (<mark>TypeError</mark> $e) {
     var_dump( $e-&gt;getMessage() );
 }
 	                    </code></pre>
@@ -226,7 +226,7 @@ string(148) &quot;Argument 2 passed to add()
 	                <section>
 	                    <h2>Types de retour</h2>
 	                    <pre><code data-trim data-noescape>
-function add(int $a, int $b) : int {
+function add(int $a, int $b) <mark>: int</mark> {
     return $a + $b;
 }
 	                    </code></pre>
@@ -242,8 +242,8 @@ function add(int $a, int $b) : int {
 	                <section>
 	                    <h2>Types de retour</h2>
 	                    <pre><code data-trim data-noescape>
-function get_config() : array {
-    return 42;
+function get_config() <mark>: array</mark> {
+    return <mark>42</mark>;
 }
 get_config();
 	                    </code></pre>
@@ -263,13 +263,13 @@ Fatal error: Uncaught TypeError:
 	                <section>
 	                    <h2>Typage strict</h2>
 	                    <pre><code data-trim data-noescape>
-declare(strict_types=1);
+<mark>declare(strict_types=1);</mark>
 
-function add(int $a, int $b) {
+function add(int $a, <mark>int</mark> $b) {
     return $a + $b;
 }
 
-add(10, &apos;20&apos;);
+add(10, <mark>&apos;20&apos;</mark>);
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
 Fatal error: Uncaught TypeError:
@@ -318,13 +318,13 @@ Fatal error: Uncaught TypeError:
 	                    <h2>Combined Comparison (Spaceship) Operator</h2>
 						<pre><code data-trim data-noescape>
 function order_func($a, $b) {
-    return $a &lt;=&gt; $b;
+    return $a <mark>&lt;=&gt;</mark> $b;
 }
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
 function order_func($a, $b) {
     return [$a-&gt;x, $a-&gt;y, $a-&gt;foo]
-        &lt;=&gt; [$b-&gt;x, $b-&gt;y, $b-&gt;foo];
+        <mark>&lt;=&gt;</mark> [$b-&gt;x, $b-&gt;y, $b-&gt;foo];
 }
 	                    </code></pre>
 						<p>
@@ -397,7 +397,7 @@ try {
     // Ooops !
     $obj-&gt;methode();
 }
-catch (Error $e) {
+catch (<mark>Error</mark> $e) {
     var_dump($e&gt;getMessage());
 }
 	                    </code></pre>
@@ -422,7 +422,7 @@ PHP;
 try {
     eval($php);
 }
-catch (ParseError $e) {
+catch (<mark>ParseError</mark> $e) {
     var_dump($e-&gt;getMessage());
 }
 	                    </code></pre>
@@ -501,7 +501,7 @@ interface Throwable
 	                <section>
 	                    <h2>Classes anonymes</h2>
 	                    <pre><code data-trim data-noescape>
-$obj = new class (&quot;Monde&quot;) {
+$obj = <mark>new class</mark> (&quot;Monde&quot;) {
     protected $qui;
 
     public function __construct($qui) {
@@ -547,14 +547,14 @@ Hello, Monde !
 function plop() {
     yield 100;
     yield 200;
-    return 42;
+    <mark>return 42;</mark>
 }
 
 foreach (($generator = plop()) as $val) {
     var_dump($val);
 }
 
-var_dump( $generator-&gt;getReturn() );
+var_dump( $generator<mark>-&gt;getReturn()</mark> );
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
 int(100)
@@ -574,7 +574,7 @@ int(42)
 	                    <h2>Generator Delegation</h2>
 	                    <pre><code data-trim data-noescape>
 function test() {
-    yield from [10, 20, 30];
+    <mark>yield from</mark> [10, 20, 30];
 }
 
 foreach (test() as $val) {
@@ -605,8 +605,8 @@ function sub_generator_2() {
     yield from [ 'aa', 'bb', ];
 }
 function delegating_generator() {
-    yield from sub_generator_1();
-    yield from sub_generator_2();
+    <mark>yield from</mark> sub_generator_1();
+    <mark>yield from</mark> sub_generator_2();
 }
 
 foreach (delegating_generator() as $val) {
@@ -644,8 +644,8 @@ string(2) "bb"
 	                    <h2>Class Constant Visibility</h2>
 	                    <pre><code data-trim data-noescape>
 class MaClasse {
-    public const MA_PUBLIQUE = 42;
-    private const MA_PRIVEE = 1234;
+    <mark>public</mark> const MA_PUBLIQUE = 42;
+    <mark>private</mark> const MA_PRIVEE = 1234;
     public function test() {
         var_dump( self::MA_PRIVEE );
     }
@@ -678,8 +678,8 @@ $array = [
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
 list (
-    &apos;glop&apos; =&gt; $a,
-    &apos;who&apos; =&gt; $b
+    <mark>&apos;glop&apos; =&gt;</mark> $a,
+    <mark>&apos;who&apos; =&gt;</mark> $b
 ) = $array;
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
@@ -700,7 +700,7 @@ var_dump($a, $b);
 	                    <pre><code data-trim data-noescape>
 $str = &quot;Pascal&quot;;
 var_dump($str[2]);  // string(1) &quot;s&quot;
-var_dump($str[-2]); // string(1) &quot;a&quot;
+var_dump($str[<mark>-2</mark>]); // string(1) &quot;a&quot;
 	                    </code></pre>
 						<p>PHP 7.0&nbsp;:</p>
 	                    <pre><code data-trim data-noescape>
@@ -719,7 +719,7 @@ string(0) &quot;&quot;
 	                    <h2>Generalize support of negative string offsets</h2>
 	                    <pre><code data-trim data-noescape>
 $str = &quot;Pas.al&quot;;
-$str[-3] = &apos;c&apos;;
+$str[<mark>-3</mark>] = &apos;c&apos;;
 var_dump($str);  // string(6) &quot;Pascal&quot;
 	                    </code></pre>
 						<p>PHP 7.0&nbsp;:</p>
@@ -737,7 +737,7 @@ Warning: Illegal string offset:  -3
 					<section>
 	                    <h2>Generalize support of negative string offsets</h2>
 	                    <pre><code data-trim data-noescape>
-var_dump( strpos(&quot;Pascal&quot;, &quot;c&quot;, -5) ); // int(3)
+var_dump( strpos(&quot;Pascal&quot;, &quot;c&quot;, <mark>-5</mark>) ); // int(3)
 	                    </code></pre>
 						<p>PHP 7.0&nbsp;:</p>
 	                    <pre><code data-trim data-noescape>
@@ -765,7 +765,7 @@ try {
         case 1: throw new Blah();
         case 2: throw new Another();
     }
-} catch (Plop | Blah $e) {
+} catch (<mark>Plop | Blah</mark> $e) {
     printf(&quot;1er catch : %s\n&quot;, get_class($e));
 } catch (Another $e) {
     printf(&quot;2nd catch : %s\n&quot;, get_class($e));
@@ -782,13 +782,13 @@ try {
 					<section>
 	                    <h2>Square bracket syntax for array destructuring assignment</h2>
 	                    <pre><code data-trim data-noescape>
-[$a, $b] = [10, 20];
+<mark>[</mark>$a, $b<mark>]</mark> = [10, 20];
 var_dump($a, $b);
 // int(10)
 // int(20)
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
-[&apos;glop&apos; =&gt; $glop, &apos;plop&apos; =&gt; $plop] = [
+<mark>[</mark>&apos;glop&apos; =&gt; $glop, &apos;plop&apos; =&gt; $plop<mark>]</mark> = [
     &apos;plop&apos; =&gt; 42,
     &apos;glop&apos; =&gt; &quot;Hello&quot;,
 ];
@@ -807,7 +807,7 @@ var_dump($plop, $glop);
 					<section>
 	                    <h2>Nullable Types</h2>
 	                    <pre><code data-trim data-noescape>
-function fonc01(?int $a) {
+function fonc01(<mark>?int</mark> $a) {
     var_dump($a);
 }
 	                    </code></pre>
@@ -831,7 +831,7 @@ fonc01();
 	                    <h2>Nullable Types</h2>
 						<p>PHP 7.0</p>
 	                    <pre><code data-trim data-noescape>
-function fonc01(int $a) {
+function fonc01(<mark>int</mark> $a) {
     var_dump($a);
 }
 	                    </code></pre>
@@ -852,7 +852,7 @@ fonc01(null); // TypeError: Argument 1 passed to
 					<section>
 	                    <h2>Nullable Types</h2>
 	                    <pre><code data-trim data-noescape>
-function fonc02(?int $a, ?int $b) : ?int {
+function fonc02(?int $a, ?int $b) : <mark>?int</mark> {
     if ($a === null || $b === null) {
         return null;
     }
@@ -875,7 +875,7 @@ var_dump( fonc02(10, null) ); // NULL
 	                    <h2>Nullable Types</h2>
 						<p>PHP 7.0</p>
 	                    <pre><code data-trim data-noescape>
-function fonc02(int $a, $b) : int {
+function fonc02(int $a, $b) : <mark>int</mark> {
     if ($a === null || $b === null) {
         return null;
     }
@@ -904,12 +904,12 @@ function fonc01() {
 }
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
-function fonc02() : void {
+function fonc02() <mark>: void</mark> {
     printf(&quot;%s\n&quot;, __FUNCTION__);
 }
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
-function function03() : void {
+function function03() <mark>: void</mark> {
     printf(&quot;%s\n&quot;, __FUNCTION__);
 
     // Fatal error: A void function must not return a value
@@ -932,11 +932,11 @@ function ma_fonction() {
 }
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
-$closure = Closure::fromCallable(&apos;ma_fonction&apos;);
+$closure = <mark>Closure::fromCallable</mark>(&apos;ma_fonction&apos;);
 $closure();  // string(11) &quot;ma_fonction&quot;
 	                    </code></pre>
 	                    <pre><code data-trim data-noescape>
-$closure = Closure::fromCallable(&apos;plop&apos;);
+$closure = <mark>Closure::fromCallable</mark>(&apos;plop&apos;);
 // TypeError: Failed to create closure from callable:
 // function &apos;plop&apos; not found or invalid function name
 	                    </code></pre>
@@ -951,7 +951,7 @@ $closure = Closure::fromCallable(&apos;plop&apos;);
 					<section>
 	                    <h2>Iterable</h2>
 	                    <pre><code data-trim data-noescape>
-function fonc01(iterable $data) {
+function fonc01(<mark>iterable</mark> $data) {
     foreach ($data as $key =&gt; $val) {
         // ...
     }
