@@ -6,9 +6,7 @@ Un peu en vrac, une liste des RFCs correspondant aux points qu'il peut être int
 ## PHP 7.0
 
  * Null Coalesce Operator - https://wiki.php.net/rfc/isset_ternary
- * Remove alternative PHP tags - https://wiki.php.net/rfc/remove_alternative_php_tags
  * Unicode Codepoint Escape Syntax - https://wiki.php.net/rfc/unicode_escape
- * Remove deprecated functionality in PHP 7 - https://wiki.php.net/rfc/remove_deprecated_functionality_in_php7
  * Return Types - https://wiki.php.net/rfc/return_types
  * Combined Comparison (Spaceship) Operator - https://wiki.php.net/rfc/combined-comparison-operator
  * Group Use Declarations - https://wiki.php.net/rfc/group_use_declarations
@@ -21,6 +19,8 @@ Un peu en vrac, une liste des RFCs correspondant aux points qu'il peut être int
  * Reserving More Types in PHP 7 - https://wiki.php.net/rfc/reserve_more_types_in_php_7
  * Reserve Even More Types in PHP 7 - https://wiki.php.net/rfc/reserve_even_more_types_in_php_7
  * Throwable Interface - https://wiki.php.net/rfc/throwable-interface
+ * Remove alternative PHP tags - https://wiki.php.net/rfc/remove_alternative_php_tags
+ * Remove deprecated functionality in PHP 7 - https://wiki.php.net/rfc/remove_deprecated_functionality_in_php7
 
 ## PHP 7.1
 
