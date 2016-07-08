@@ -702,11 +702,13 @@ $str = &quot;Pascal&quot;;
 var_dump($str[2]);  // string(1) &quot;s&quot;
 var_dump($str[<mark>-2</mark>]); // string(1) &quot;a&quot;
 	                    </code></pre>
-						<p>PHP 7.0&nbsp;:</p>
-	                    <pre><code data-trim data-noescape>
+						<div class="fragment">
+							<p>PHP 7.0&nbsp;:</p>
+		                    <pre><code data-trim data-noescape>
 string(1) &quot;s&quot;
 string(0) &quot;&quot;
-	                    </code></pre>
+	                    	</code></pre>
+						</div>
 						<p>
 							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
 						</p>
@@ -722,10 +724,12 @@ $str = &quot;Pas.al&quot;;
 $str[<mark>-3</mark>] = &apos;c&apos;;
 var_dump($str);  // string(6) &quot;Pascal&quot;
 	                    </code></pre>
-						<p>PHP 7.0&nbsp;:</p>
-	                    <pre><code data-trim data-noescape>
+						<div class="fragment">
+							<p>PHP 7.0&nbsp;:</p>
+		                    <pre><code data-trim data-noescape>
 Warning: Illegal string offset:  -3
-	                    </code></pre>
+	                    	</code></pre>
+						</div>
 						<p>
 							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
 						</p>
@@ -739,10 +743,12 @@ Warning: Illegal string offset:  -3
 	                    <pre><code data-trim data-noescape>
 var_dump( strpos(&quot;Pascal&quot;, &quot;c&quot;, <mark>-5</mark>) ); // int(3)
 	                    </code></pre>
-						<p>PHP 7.0&nbsp;:</p>
-	                    <pre><code data-trim data-noescape>
+						<div class="fragment">
+							<p>PHP 7.0&nbsp;:</p>
+	                    	<pre><code data-trim data-noescape>
 Warning: strpos(): Offset not contained in string
-	                    </code></pre>
+	                    	</code></pre>
+						</div>
 						<p>
 							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
 						</p>
@@ -815,7 +821,7 @@ function fonc01(<mark>?int</mark> $a) {
 fonc01(100); // int(100)
 fonc01(null); // NULL
 	                    </code></pre>
-	                    <pre><code data-trim data-noescape>
+	                    <pre class="fragment"><code data-trim data-noescape>
 fonc01();
 // Error: Too few arguments to function fonc01(), 0 passed
 	                    </code></pre>
@@ -913,7 +919,7 @@ function function03() <mark>: void</mark> {
     printf(&quot;%s\n&quot;, __FUNCTION__);
 
     // Fatal error: A void function must not return a value
-    return &apos;plop&apos;;
+    <mark>return</mark> &apos;plop&apos;;
 }
 	                    </code></pre>
 						<p>
@@ -935,7 +941,7 @@ function ma_fonction() {
 $closure = <mark>Closure::fromCallable</mark>(&apos;ma_fonction&apos;);
 $closure();  // string(11) &quot;ma_fonction&quot;
 	                    </code></pre>
-	                    <pre><code data-trim data-noescape>
+	                    <pre class="fragment"><code data-trim data-noescape>
 $closure = <mark>Closure::fromCallable</mark>(&apos;plop&apos;);
 // TypeError: Failed to create closure from callable:
 // function &apos;plop&apos; not found or invalid function name
@@ -962,7 +968,7 @@ fonc01([10, 20, 30]);
 fonc01(new SplFixedArray(5));
 fonc01(mon_generateur());
 	                    </code></pre>
-	                    <pre><code data-trim data-noescape>
+	                    <pre class="fragment"><code data-trim data-noescape>
 fonc01(&quot;plop&quot;);
 // TypeError: Argument 1 passed to fonc01()
 // must be iterable, string given
