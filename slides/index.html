@@ -991,9 +991,20 @@ fonc01(&quot;plop&quot;);
 
 					<section>
 	                    <h2>Asynchronous Signal Handling</h2>
-	                    <p>
-	                    	TODO
-	                    </p>
+						<p>
+							Sans <code>declare(ticks=1)</code>
+						</p>
+						<pre><code data-trim data-noescape>
+<mark>pcntl_async_signals(true);</mark>
+
+pcntl_signal(SIGTERM, function ($signo) {
+    var_dump(&quot;SIGTERM&quot;); die;
+});
+
+while (true) {
+    usleep(100);
+}
+	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/async_signals">wiki.php.net/rfc/async_signals</a>
 						</p>
