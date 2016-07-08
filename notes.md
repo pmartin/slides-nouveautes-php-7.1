@@ -58,7 +58,8 @@ git pull
 ./buildconf
 ./configure --prefix=$HOME/bin/php-7.1-debug \
     --disable-all --enable-debug \
-    --enable-maintainer-zts
+    --enable-maintainer-zts \
+    --enable-pcntl
 make -j 6 -l 8
 make install
 ```
