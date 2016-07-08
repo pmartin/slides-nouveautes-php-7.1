@@ -82,26 +82,26 @@
 	                </section>
 
 					<section>
-	                    <h2>On en est où ?</h2>
+	                    <h2>On en est où&nbsp;?</h2>
 	                    <ul>
 							<li>
-								PHP 5.6
+								PHP&nbsp;5.6
 								<ul>
-									<li>Dernière  version 5.x</li>
+									<li>Dernière version 5.x</li>
 									<li>Publiée le 28 août 2014</li>
 								</ul>
 							</li>
 	                    	<li>
-								PHP 7.0
+								PHP&nbsp;7.0
 								<ul>
 									<li>Publiée le 3 décembre 2015</li>
 								</ul>
 							</li>
 	                    	<li>
-								PHP 7.1
+								PHP&nbsp;7.1
 								<ul>
 									<li>Feature freeze</li>
-									<li>Publication : fin 2016 ?</li>
+									<li>Publication&nbsp;: fin 2016&nbsp;?</li>
 								</ul>
 							</li>
 	                    </ul>
@@ -136,17 +136,17 @@
 					<section>
 	                    <h2>Null Coalesce Operator</h2>
 	                    <pre><code data-trim>
-$username = isset($_GET['user']) ? $_GET['user'] : 'nobody';
+$username = isset($_GET[&apos;user&apos;]) ? $_GET[&apos;user&apos;] : &apos;nobody&apos;;
 	                    </code></pre>
 	                    <pre class="fragment"><code data-trim>
-$username = $_GET['user'] ?? 'nobody';
+$username = $_GET[&apos;user&apos;] ?? &apos;nobody&apos;;
 	                    </code></pre>
 	                    <pre class="fragment"><code data-trim>
 $model = Model::get($id) ?? $default_model;
 	                    </code></pre>
 	                    <pre class="fragment"><code data-trim>
 function foo() {
-    echo "executed!", PHP_EOL;
+    echo &quot;executed!&quot;, PHP_EOL;
 }
 var_dump(true ?? foo());
 	                    </code></pre>
@@ -163,11 +163,11 @@ var_dump(true ?? foo());
 					<section>
 	                    <h2>Unicode Codepoint Escape Syntax</h2>
 	                    <pre><code data-trim>
-$ php -r 'echo "I \u{2665} PHP!\n";'
-I ♥ PHP!
+$ php -r &apos;echo &quot;I \u{2665} PHP!\n&quot;;&apos;
+I &hearts; PHP!
 	                    </code></pre>
 	                    <pre class="fragment"><code data-trim>
-$ php -r 'echo "\u{1F408} \u{1F431} \u{1F638} \u{1F639} \u{1F63A} \u{1F63B} \u{1F63C} \u{1F63D} \u{1F63E} \u{1F63F} \u{1F640} - so cute!!!\n";'
+$ php -r &apos;echo &quot;\u{1F408} \u{1F431} \u{1F638} \u{1F639} \u{1F63A} \u{1F63B} \u{1F63C} \u{1F63D} \u{1F63E} \u{1F63F} \u{1F640} - so cute!!!\n&quot;;&apos;
 🐈 🐱 😸 😹 😺 😻 😼 😽 😾 😿 🙀 - so cute!!!
 	                    </code></pre>
 						<p>
@@ -181,14 +181,13 @@ $ php -r 'echo "\u{1F408} \u{1F431} \u{1F638} \u{1F639} \u{1F63A} \u{1F63B} \u{1
 					<section class="section section-php7 section-php7-part1" data-state="section-php7-part1">
 	                    <h2>Type hints scalaires</h2>
 	                    <pre><code data-trim>
-&lt;?php
 function add(int $a, int $b) {
     return $a + $b;
 }
 	                    </code></pre>
 	                    <pre><code data-trim>
 var_dump( add(10, 20) );
-var_dump( add('10', '20') );
+var_dump( add(&apos;10&apos;, &apos;20&apos;) );
 	                    </code></pre>
 	                    <pre><code data-trim>
 int(30)
@@ -206,7 +205,7 @@ int(30)
 	                    <h2>Type hints scalaires</h2>
 	                    <pre><code data-trim>
 try {
-    var_dump( add(10, 'abc') );
+    var_dump( add(10, &apos;abc&apos;) );
 }
 catch (TypeError $e) {
     var_dump( $e-&gt;getMessage() );
@@ -264,14 +263,13 @@ Fatal error: Uncaught TypeError:
 	                <section>
 	                    <h2>Typage strict</h2>
 	                    <pre><code data-trim>
-&lt;?php
 declare(strict_types=1);
 
 function add(int $a, int $b) {
     return $a + $b;
 }
 
-add(10, '20');
+add(10, &apos;20&apos;);
 	                    </code></pre>
 	                    <pre><code data-trim>
 Fatal error: Uncaught TypeError:
@@ -365,7 +363,7 @@ use function Mon\Nom\fonc01;
 use const Mon\Nom\CONST01;
 use Mon\Nom\Class01;
 	                    </code></pre>
-	                    <pre><code data-trim>
+	                    <pre class="fragment"><code data-trim>
 use Mon\Nom\ {
     function fonc01,
     const CONST01,
@@ -394,16 +392,14 @@ use Mon\Nom\ {
 	                <section>
 	                    <h2>Erreurs → exceptions</h2>
 	                    <pre><code data-trim>
-&lt;?php
 $obj = null;
 try {
     // Ooops !
     $obj-&gt;methode();
 }
 catch (Error $e) {
-    var_dump($e-&gt;getMessage());
+    var_dump($e&gt;getMessage());
 }
-?&gt;
 	                    </code></pre>
 	                    <pre><code data-trim>
 string(43) &quot;Call to a member function methode() on null&quot;
@@ -418,7 +414,6 @@ string(43) &quot;Call to a member function methode() on null&quot;
 	                <section>
 	                    <h2>Erreurs → exceptions</h2>
 	                    <pre><code data-trim>
-&lt;?php
 $php = &lt;&lt;&lt;'PHP'
 $a = 10        // -- Parse error ! -- //
 printf("\$a = %d\n", $a);
@@ -430,7 +425,6 @@ try {
 catch (ParseError $e) {
     var_dump($e-&gt;getMessage());
 }
-?&gt;
 	                    </code></pre>
 	                    <pre><code data-trim>
 string(44) &quot;syntax error, unexpected 'printf' (T_STRING)&quot;
@@ -659,7 +653,7 @@ class MaClasse {
 						</code></pre>
 	                    <pre><code data-trim>
 var_dump( MaClasse::MA_PUBLIQUE ); // int(42)
-(new MaClasse())->test(); // int(1234)
+(new MaClasse())-&gt;test(); // int(1234)
 						</code></pre>
 						<pre><code data-trim>
 // Error: Cannot access private const MaClasse::MA_PRIVEE
@@ -677,21 +671,21 @@ var_dump( MaClasse::MA_PRIVEE );
 	                    <h2>Allow specifying keys in <code>list()</code></h2>
 	                    <pre><code data-trim>
 $array = [
-    'glop' => "Hello",
-    'plop' => 123456,
-    'who' => "World",
+    &apos;glop&apos; =&gt; &quot;Hello&quot;,
+    &apos;plop&apos; =&gt; 123456,
+    &apos;who&apos; =&gt; &quot;World&quot;,
 ];
 	                    </code></pre>
 	                    <pre><code data-trim>
 list (
-    'glop' => $a,
-    'who' => $b
+    &apos;glop&apos; =&gt; $a,
+    &apos;who&apos; =&gt; $b
 ) = $array;
 	                    </code></pre>
 	                    <pre><code data-trim>
 var_dump($a, $b);
-// string(5) "Hello"
-// string(5) "World"
+// string(5) &quot;Hello&quot;
+// string(5) &quot;World&quot;
 	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/list_keys">wiki.php.net/rfc/list_keys</a>
@@ -704,14 +698,14 @@ var_dump($a, $b);
 					<section>
 	                    <h2>Generalize support of negative string offsets</h2>
 	                    <pre><code data-trim>
-$str = "Pascal";
-var_dump($str[2]);  // string(1) "s"
-var_dump($str[-2]); // string(1) "a"
+$str = &quot;Pascal&quot;;
+var_dump($str[2]);  // string(1) &quot;s&quot;
+var_dump($str[-2]); // string(1) &quot;a&quot;
 	                    </code></pre>
-						<p>PHP 7.0 :</p>
+						<p>PHP 7.0&nbsp;:</p>
 	                    <pre><code data-trim>
-string(1) "s"
-string(0) ""
+string(1) &quot;s&quot;
+string(0) &quot;&quot;
 	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/negative-string-offsets">wiki.php.net/rfc/negative-string-offsets</a>
@@ -724,11 +718,11 @@ string(0) ""
 					<section>
 	                    <h2>Generalize support of negative string offsets</h2>
 	                    <pre><code data-trim>
-$str = "Pas.al";
-$str[-3] = 'c';
-var_dump($str);  // string(6) "Pascal"
+$str = &quot;Pas.al&quot;;
+$str[-3] = &apos;c&apos;;
+var_dump($str);  // string(6) &quot;Pascal&quot;
 	                    </code></pre>
-						<p>PHP 7.0 :</p>
+						<p>PHP 7.0&nbsp;:</p>
 	                    <pre><code data-trim>
 Warning: Illegal string offset:  -3
 	                    </code></pre>
@@ -743,9 +737,9 @@ Warning: Illegal string offset:  -3
 					<section>
 	                    <h2>Generalize support of negative string offsets</h2>
 	                    <pre><code data-trim>
-var_dump( strpos("Pascal", "c", -5) ); // int(3)
+var_dump( strpos(&quot;Pascal&quot;, &quot;c&quot;, -5) ); // int(3)
 	                    </code></pre>
-						<p>PHP 7.0 :</p>
+						<p>PHP 7.0&nbsp;:</p>
 	                    <pre><code data-trim>
 Warning: strpos(): Offset not contained in string
 	                    </code></pre>
@@ -772,9 +766,9 @@ try {
         case 2: throw new Another();
     }
 } catch (Plop | Blah $e) {
-    printf("1er catch : %s\n", get_class($e));
+    printf(&quot;1er catch : %s\n&quot;, get_class($e));
 } catch (Another $e) {
-    printf("2nd catch : %s\n", get_class($e));
+    printf(&quot;2nd catch : %s\n&quot;, get_class($e));
 }
 	                    </code></pre>
 						<p>
@@ -794,13 +788,13 @@ var_dump($a, $b);
 // int(20)
 	                    </code></pre>
 	                    <pre><code data-trim>
-['glop' => $glop, 'plop' => $plop] = [
-    'plop' => 42,
-    'glop' => "Hello",
+[&apos;glop&apos; =&gt; $glop, &apos;plop&apos; =&gt; $plop] = [
+    &apos;plop&apos; =&gt; 42,
+    &apos;glop&apos; =&gt; &quot;Hello&quot;,
 ];
 var_dump($plop, $glop);
 // int(42)
-// string(5) "Hello"
+// string(5) &quot;Hello&quot;
 	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/short_list_syntax">wiki.php.net/rfc/short_list_syntax</a>
@@ -906,20 +900,20 @@ var_dump( fonc02(10, null) ); // TypeError:
 	                    <h2>Void Return Type</h2>
 	                    <pre><code data-trim>
 function fonc01() {
-    printf("%s\n", __FUNCTION__);
+    printf(&quot;%s\n&quot;, __FUNCTION__);
 }
 	                    </code></pre>
 	                    <pre><code data-trim>
 function fonc02() : void {
-    printf("%s\n", __FUNCTION__);
+    printf(&quot;%s\n&quot;, __FUNCTION__);
 }
 	                    </code></pre>
 	                    <pre><code data-trim>
 function function03() : void {
-    printf("%s\n", __FUNCTION__);
+    printf(&quot;%s\n&quot;, __FUNCTION__);
 
     // Fatal error: A void function must not return a value
-    return 'plop';
+    return &apos;plop&apos;;
 }
 	                    </code></pre>
 						<p>
@@ -938,13 +932,13 @@ function ma_fonction() {
 }
 	                    </code></pre>
 	                    <pre><code data-trim>
-$closure = Closure::fromCallable('ma_fonction');
-$closure();  // string(11) "ma_fonction"
+$closure = Closure::fromCallable(&apos;ma_fonction&apos;);
+$closure();  // string(11) &quot;ma_fonction&quot;
 	                    </code></pre>
 	                    <pre><code data-trim>
-$closure = Closure::fromCallable('plop');
+$closure = Closure::fromCallable(&apos;plop&apos;);
 // TypeError: Failed to create closure from callable:
-// function 'plop' not found or invalid function name
+// function &apos;plop&apos; not found or invalid function name
 	                    </code></pre>
 						<p>
 							<a href="https://wiki.php.net/rfc/closurefromcallable">wiki.php.net/rfc/closurefromcallable</a>
@@ -958,7 +952,7 @@ $closure = Closure::fromCallable('plop');
 	                    <h2>Iterable</h2>
 	                    <pre><code data-trim>
 function fonc01(iterable $data) {
-    foreach ($data as $key => $val) {
+    foreach ($data as $key =&gt; $val) {
         // ...
     }
 }
@@ -969,7 +963,7 @@ fonc01(new SplFixedArray(5));
 fonc01(mon_generateur());
 	                    </code></pre>
 	                    <pre><code data-trim>
-fonc01("plop");
+fonc01(&quot;plop&quot;);
 // TypeError: Argument 1 passed to fonc01()
 // must be iterable, string given
 	                    </code></pre>
@@ -984,7 +978,8 @@ fonc01("plop");
 					<section>
 	                    <h2>Throw Error in Extensions</h2>
 	                    <p>
-	                    	TODO
+	                    	La majorité des erreurs <strong>fatales</strong> levées par des extensions
+							<strong>intégrées à PHP</strong> sont converties en exceptions.
 	                    </p>
 						<p>
 							<a href="https://wiki.php.net/rfc/throw_error_in_extensions">wiki.php.net/rfc/throw_error_in_extensions</a>
@@ -1013,7 +1008,7 @@ fonc01("plop");
 
 				<section>
 					<section>
-	                    <h1>En route vers PHP 8.0 ?</h1>
+	                    <h1>En route vers PHP 8.0&nbsp;?</h1>
 	                    <aside class="notes">
 	                        ul>li*3
 	                    </aside>
@@ -1036,7 +1031,7 @@ fonc01("plop");
 
 				<section>
 					<section>
-	                    <h1>Et donc ?</h1>
+	                    <h1>Et donc&nbsp;?</h1>
 	                    <aside class="notes">
 	                        ul>li*3
 	                    </aside>
