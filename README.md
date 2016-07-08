@@ -1,12 +1,11 @@
-# Slides Nouveautés PHP 7.0 et 7.1
+# Slides « Nouveautés PHP 7.0 et 7.1 »
 
 Quelques slides qui reprennent les principales nouveautés de PHP 7.0 et PHP 7.1.
 
 ## Pourquoi ?
 
 Ces slides sont destinés à servir de support pour présenter les principales nouveautés des
-dernières versions de PHP.
-
+dernières versions de PHP.  
 Cela peut aider une équipe de développeurs à exploiter ces nouvelles fonctionnalités.
 
 Objectif : présentation rapide, de l'ordre d'une demi-heure.
@@ -24,5 +23,5 @@ Voir le fichier [CONTRIBUTING](CONTRIBUTING.md).
 
 ## License
 
-Ces `slides` sont sous license [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).  
+Les `slides` sont sous license [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/).  
 Les `exemples` sont sous license [MIT](https://opensource.org/licenses/MIT).
