@@ -2,6 +2,8 @@
 
 Quelques slides qui reprennent les principales nouveautés de PHP 7.0 et PHP 7.1.
 
+Slides en ligne : [https://blog.pascal-martin.fr/public/slides-nouveautes-php-71-tea-juillet-2016/#/](blog.pascal-martin.fr/public/slides-nouveautes-php-71-tea-juillet-2016/)
+
 ## Pourquoi ?
 
 Ces slides sont destinés à servir de support pour présenter les principales nouveautés des
