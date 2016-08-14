@@ -45,12 +45,12 @@ Un peu en vrac, une liste des RFCs correspondant aux points qu'il peut être int
 # Builder PHP 7.1
 
 ```bash
-cd ~/developpement/php/~/developpement/php/
+cd ~/developpement/php/
 git clone https://git.php.net/repository/php-src.git php-src
 
 cd php-src
 
-git checkout master
+git checkout PHP-7.1
 ./vcsclean
 git clean -f -d
 git pull
