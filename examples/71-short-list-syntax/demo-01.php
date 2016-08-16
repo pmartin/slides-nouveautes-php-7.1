@@ -1,9 +1,11 @@
 <?php
 
-[$a, $b] = [10, 20];
-var_dump($a, $b);
+$array = [10, 20, 30];
+[$a, $b, $c] = $array;
+var_dump($a, $b, $c);
 // int(10)
 // int(20)
+// int(30)
 
 ['glop' => $glop, 'plop' => $plop] = [
     'plop' => 42,
